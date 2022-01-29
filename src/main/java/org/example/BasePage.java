@@ -1,9 +1,13 @@
 package org.example;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -47,7 +51,14 @@ public class BasePage {
 
     }
 
-    public void getScreenshotPath(){
+    public void getScreenshotPath(String testCaseName, WebDriver driver) throws IOException {
+
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File screenshot = ts.getScreenshotAs(OutputType.FILE);
+        String destFile = System.getProperty("user.dir") + "\\tools\\Screenshots\\" + testCaseName+".png ";
+        FileUtils.copyFile(screenshot, new File(destFile));
+
+        driver.quit();
 
     }
 }
