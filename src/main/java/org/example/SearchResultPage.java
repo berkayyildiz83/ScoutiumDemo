@@ -3,16 +3,22 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 
 public class SearchResultPage {
+
     public WebDriver driver;
+    WebDriverWait wait;
+
     By resultPlayer = By.xpath("(//span[contains(text(),'Berkay Yıldız')])[1]");
 
     public SearchResultPage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public WebElement resultPlayer() {

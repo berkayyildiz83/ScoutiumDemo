@@ -8,7 +8,7 @@
         <classes>
             <class name="org.example.TestCase">
                 <methods>
-                    <include name="TestCase"/>
+                    <include name="PlayerUnfollowValidation"/>
                 </methods>
             </class>
         </classes>

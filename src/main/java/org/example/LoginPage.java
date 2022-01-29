@@ -3,10 +3,16 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
 
     public WebDriver driver;
+    WebDriverWait wait;
+
     By emailLogin = By.xpath("//span[contains(text(),'E-Posta ile giriş yapmak istiyorum.')]");
     By textEmail = By.cssSelector("input[type='email']");
     By textPassword = By.xpath("//input[@type='password']");
@@ -14,8 +20,8 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
 
     public WebElement emailLogin() {
 
@@ -34,6 +40,8 @@ public class LoginPage {
 
     public WebElement btnGirisYap() {
 
-        return driver.findElement(btnGirisYap);
+        return wait.until(ExpectedConditions.elementToBeClickable(btnGirisYap));
+
+
     }
 }
