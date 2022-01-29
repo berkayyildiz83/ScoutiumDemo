@@ -1,6 +1,5 @@
 package org.example;
 
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -12,27 +11,27 @@ public class TestCase extends BasePage {
     @Test
     public void PlayerUnfollowValidation() throws InterruptedException {
 
-        LandingPage lp = new LandingPage(driver);
-        LoginPage lop = new LoginPage(driver);
-        HomePage hp = new HomePage(driver);
-        SearchResultPage sp = new SearchResultPage(driver);
-        PlayerDetail pd = new PlayerDetail(driver);
-        ShortListPage slp = new ShortListPage(driver);
-        Actions act = new Actions(driver);
+        LandingPage landingPage = new LandingPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        SearchResultPage searchResultPage = new SearchResultPage(driver);
+        PlayerDetail playerDetail = new PlayerDetail(driver);
+        ShortListPage shortListPage = new ShortListPage(driver);
 
-        lp.clubLogin().click();
-        lop.emailLogin().click();
-        lop.textEmail().clear();
-        lop.textEmail().sendKeys("test@scoutium.com");
-        lop.textPassword().sendKeys("654321");
-        lop.btnGirisYap().click();
-        hp.searchBar().sendKeys("berkay yıldız");
-        hp.btnKesfet().click();
-        sp.resultPlayer().click();
-        sp.switchWindowChild();
-        slp.btnTakipListesi().click();
+
+        landingPage.clubLogin().click();
+        loginPage.emailLogin().click();
+        loginPage.textEmail().clear();
+        loginPage.textEmail().sendKeys("test@scoutium.com");
+        loginPage.textPassword().sendKeys("654321");
+        loginPage.btnGirisYap().click();
+        homePage.searchBar().sendKeys("berkay yıldız");
+        homePage.btnKesfet().click();
+        searchResultPage.resultPlayer().click();
+        searchResultPage.switchWindowChild();
+        shortListPage.btnTakipListesi().click();
         Assert.assertEquals(driver.getCurrentUrl(), "https://scoutium.com/shortlist");
-        slp.checkPlayersInList();
+        shortListPage.checkPlayersInList();
 
     }
 
