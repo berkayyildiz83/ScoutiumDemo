@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class ShortListPage {
     public WebDriver driver;
 
-    By btnTakipListesi = By.xpath("//li[3]/a/span");
+    By btnTakipListesi = By.cssSelector("a[href='/shortlist']");
 
     public ShortListPage(WebDriver driver) {
         this.driver = driver;

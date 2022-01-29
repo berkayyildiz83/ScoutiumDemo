@@ -20,16 +20,22 @@ public class SearchResultPage {
         return driver.findElement(resultPlayer);
     }
 
-    public void switchWindow() {
+    public void switchWindowChild() throws InterruptedException {
         Set<String> windows = driver.getWindowHandles(); //parent child ID
         Iterator<String> it = windows.iterator();
         String parentId = it.next();
         String childId = it.next();
         driver.switchTo().window(childId);
+        Thread.sleep(2000);
+        try {
+            driver.findElement(By.cssSelector("span[class='unfollow-button-text-container']")).click();
+        } catch (Exception e) {
+            driver.findElement(By.xpath("//span[contains(text(),'Takip Et')]")).click();
+        }
 
-    }
-
-    public void closeWindow(){
+        Thread.sleep(2000);
         driver.close();
+        driver.switchTo().window(parentId);
     }
+
 }

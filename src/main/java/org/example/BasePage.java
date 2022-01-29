@@ -51,14 +51,13 @@ public class BasePage {
 
     }
 
-    public void getScreenshotPath(String testCaseName, WebDriver driver) throws IOException {
+    public String getScreenshotPath(String testCaseName, WebDriver driver) throws IOException {
 
         TakesScreenshot ts = (TakesScreenshot) driver;
         File screenshot = ts.getScreenshotAs(OutputType.FILE);
         String destFile = System.getProperty("user.dir") + "\\tools\\Screenshots\\" + testCaseName+".png ";
         FileUtils.copyFile(screenshot, new File(destFile));
-
-        driver.quit();
+        return destFile;
 
     }
 }

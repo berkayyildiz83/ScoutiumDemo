@@ -1,15 +1,22 @@
 package org.example;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+
 public class TestCase extends BasePage {
+    //Logger log = LogManager.getLogManager().getLogger(TestCase.class.getName());
 
     @BeforeTest
     public void initialize() throws Throwable {
         driver = InitializeDriver();
+        /*log.info("Driver is initialized");
+        log.info("Navigated to Home page");*/
     }
 
     @Test
@@ -22,6 +29,7 @@ public class TestCase extends BasePage {
         SearchResultPage sp = new SearchResultPage(driver);
         PlayerDetail pd = new PlayerDetail(driver);
         ShortListPage slp = new ShortListPage(driver);
+        Actions act = new Actions(driver);
 
         lp.clubLogin().click();
         lop.emailLogin().click();
@@ -35,14 +43,11 @@ public class TestCase extends BasePage {
         hp.btnKesfet().click();
         Thread.sleep(2000);
         sp.resultPlayer().click();
-        /*WebElement BY = driver.findElement(By.xpath("(//span[contains(text(),'Berkay Yıldız')])[1]"));
-        Assert.assertEquals("Berkay Yıldız", "Berkay" );*/
         Thread.sleep(2000);
-        sp.switchWindow();
-        sp.closeWindow();
-        slp.btnTakipListesi().click();
-        slp.urlKontrol();
-        Assert.assertEquals("url2", "https://scoutium.com/shortlist");
+        sp.switchWindowChild();
+        Thread.sleep(2000);
+        driver.get("https://scoutium.com/shortlist");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://scoutium.com/shortlist");
         slp.checkPlayerInList();
         pd.checkTakip();
         pd.btnTakipEt().click();
