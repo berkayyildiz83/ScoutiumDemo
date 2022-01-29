@@ -28,7 +28,7 @@ public class SearchResultPage {
         driver.switchTo().window(childId);
         Thread.sleep(2000);
         try {
-            driver.findElement(By.cssSelector("span[class='unfollow-button-text-container']")).click();
+            driver.findElement(By.cssSelector("span[class='unfollow-button-text-container']")).isDisplayed();
         } catch (Exception e) {
             driver.findElement(By.xpath("//span[contains(text(),'Takip Et')]")).click();
         }

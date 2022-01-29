@@ -1,7 +1,5 @@
 package org.example;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -10,13 +8,10 @@ import org.testng.annotations.Test;
 
 
 public class TestCase extends BasePage {
-    //Logger log = LogManager.getLogManager().getLogger(TestCase.class.getName());
 
     @BeforeTest
     public void initialize() throws Throwable {
         driver = InitializeDriver();
-        /*log.info("Driver is initialized");
-        log.info("Navigated to Home page");*/
     }
 
     @Test
@@ -48,13 +43,13 @@ public class TestCase extends BasePage {
         Thread.sleep(2000);
         driver.get("https://scoutium.com/shortlist");
         Assert.assertEquals(driver.getCurrentUrl(), "https://scoutium.com/shortlist");
-        slp.checkPlayerInList();
+        slp.checkPlayersInList();
 
 
     }
 
     @AfterTest
     public void teardown() {
-        //driver.quit();
+        driver.quit();
     }
 }
