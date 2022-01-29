@@ -49,8 +49,7 @@ public class TestCase extends BasePage {
         driver.get("https://scoutium.com/shortlist");
         Assert.assertEquals(driver.getCurrentUrl(), "https://scoutium.com/shortlist");
         slp.checkPlayerInList();
-        pd.checkTakip();
-        pd.btnTakipEt().click();
+
 
     }
 

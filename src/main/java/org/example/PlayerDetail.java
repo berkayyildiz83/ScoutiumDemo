@@ -19,13 +19,5 @@ public class PlayerDetail {
 
     }
 
-    public void checkTakip() {
-
-        if (driver.findElement(By.xpath("//i[@class='unfollow-label']")).isDisplayed()) {
-            driver.findElement(btnTakipEdiliyor).click();
-
-        }
-
-    }
 
 }

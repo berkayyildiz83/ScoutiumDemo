@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class ShortListPage {
     public WebDriver driver;
 
@@ -19,13 +21,15 @@ public class ShortListPage {
 
     }
 
-    public void urlKontrol() {
-
-        String url2 = driver.getCurrentUrl();
-    }
-
     public void checkPlayerInList() {
-        String PlayerName = driver.findElement(By.cssSelector("//span[@class='player-name']")).getAttribute("span");
-        System.out.println(PlayerName);
+        List<WebElement> values=driver.findElements(By.xpath("//tbody/tr/td/div/div/span[1]"));
+
+        for(int i=0;i<values.size();i++){
+            System.out.println(values.get(i).getText());
+            driver.findElement(By.cssSelector("button[class='remove-shortlist v-btn theme--light']")).click();
+        }
+
+
+
     }
 }
