@@ -19,25 +19,18 @@ public class TestCase extends BasePage {
         ShortListPage shortListPage = new ShortListPage(driver);
 
 
+
         landingPage.clubLogin().click();
         loginPage.emailLogin().click();
         loginPage.textEmail().clear();
         loginPage.textEmail().sendKeys("test@scoutium.com");
         loginPage.textPassword().sendKeys("654321");
-        Thread.sleep(2000);
         loginPage.btnGirisYap().click();
-        Thread.sleep(2000);
         homePage.searchBar().sendKeys("berkay yıldız");
-        Thread.sleep(2000);
         homePage.btnKesfet().click();
-        Thread.sleep(2000);
         searchResultPage.resultPlayer().click();
-        Thread.sleep(2000);
         searchResultPage.switchWindowChild();
-        Thread.sleep(2000);
-        driver.get("https://scoutium.com/shortlist");
-        //shortListPage.btnTakipListesi().click();
-        Thread.sleep(2000);
+        shortListPage.btnTakipListesi().click();
         Assert.assertEquals(driver.getCurrentUrl(), "https://scoutium.com/shortlist");
         shortListPage.checkPlayersInList();
         homePage.btnKesfet().click();
