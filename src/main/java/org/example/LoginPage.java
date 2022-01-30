@@ -42,6 +42,5 @@ public class LoginPage {
 
         return wait.until(ExpectedConditions.elementToBeClickable(btnGirisYap));
 
-
     }
 }

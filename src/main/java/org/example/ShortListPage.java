@@ -24,6 +24,7 @@ public class ShortListPage {
         return driver.findElement(btnTakipListesi);
     }
 
+
     public void checkPlayersInList() {
 
         HomePage hp = new HomePage(driver);
@@ -39,9 +40,29 @@ public class ShortListPage {
                 driver.findElement(By.cssSelector("button[class='remove-shortlist v-btn theme--light']")).click();
                 hp.searchBar().clear();
                 hp.searchBar().sendKeys(deletedPlayer);
-                hp.btnKesfet().click();
+
+
             }
         }
 
     }
+
+    public void checkPlayerStatus() {
+
+        List<WebElement> names = driver.findElements(By.xpath("//tbody/tr"));
+
+        for (int a = 0; a < names.size(); a++) {
+            String pNames = names.get(a).getText();
+            String pName = driver.findElement(By.cssSelector("span[class='player-name']")).getText();
+
+            if (pNames.equalsIgnoreCase(pName)) {
+                driver.findElement(By.cssSelector("span[class='player-name']")).click();
+
+                break;
+
+            }
+        }
+    }
+
+
 }

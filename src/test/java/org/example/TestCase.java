@@ -24,15 +24,25 @@ public class TestCase extends BasePage {
         loginPage.textEmail().clear();
         loginPage.textEmail().sendKeys("test@scoutium.com");
         loginPage.textPassword().sendKeys("654321");
+        Thread.sleep(2000);
         loginPage.btnGirisYap().click();
+        Thread.sleep(2000);
         homePage.searchBar().sendKeys("berkay yıldız");
+        Thread.sleep(2000);
         homePage.btnKesfet().click();
+        Thread.sleep(2000);
         searchResultPage.resultPlayer().click();
+        Thread.sleep(2000);
         searchResultPage.switchWindowChild();
-        shortListPage.btnTakipListesi().click();
+        Thread.sleep(2000);
+        driver.get("https://scoutium.com/shortlist");
+        //shortListPage.btnTakipListesi().click();
+        Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), "https://scoutium.com/shortlist");
         shortListPage.checkPlayersInList();
+        homePage.btnKesfet().click();
+        shortListPage.checkPlayerStatus();
+
 
     }
-
 }
