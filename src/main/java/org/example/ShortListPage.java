@@ -47,9 +47,9 @@ public class ShortListPage {
 
     }
 
-    public void checkPlayerStatus() {
+    public void comparePlayers() {
 
-        List<WebElement> names = driver.findElements(By.xpath("//tbody/tr"));
+        List<WebElement> names = driver.findElements(By.cssSelector(".player-name"));
 
         for (int a = 0; a < names.size(); a++) {
             String pNames = names.get(a).getText();
@@ -62,6 +62,7 @@ public class ShortListPage {
 
             }
         }
+
     }
 
 

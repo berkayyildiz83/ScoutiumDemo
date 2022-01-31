@@ -3,9 +3,12 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 public class PlayerDetail {
 
@@ -20,8 +23,19 @@ public class PlayerDetail {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public WebElement btnTakipEt() {
-        return driver.findElement(btnTakipEt);
+    public void btnTakipEt() {
+        Set<String> windows = driver.getWindowHandles(); //parent child ID
+        Iterator<String> it = windows.iterator();
+        String parentId = it.next();
+        String childId = it.next();
+        driver.switchTo().window(childId);
+        if((wait.until(ExpectedConditions.elementToBeClickable(btnTakipEt)).isDisplayed())) {
+            System.out.println("TEST PASSED");
+
+        }
+        else {
+            System.out.println("TEST FAILED");
+        }
     }
 
 }

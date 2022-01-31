@@ -19,7 +19,6 @@ public class TestCase extends BasePage {
         ShortListPage shortListPage = new ShortListPage(driver);
 
 
-
         landingPage.clubLogin().click();
         loginPage.emailLogin().click();
         loginPage.textEmail().clear();
@@ -32,9 +31,11 @@ public class TestCase extends BasePage {
         searchResultPage.switchWindowChild();
         shortListPage.btnTakipListesi().click();
         Assert.assertEquals(driver.getCurrentUrl(), "https://scoutium.com/shortlist");
+        Thread.sleep(3000);
         shortListPage.checkPlayersInList();
         homePage.btnKesfet().click();
-        shortListPage.checkPlayerStatus();
+        shortListPage.comparePlayers();
+        playerDetail.btnTakipEt();
 
 
     }

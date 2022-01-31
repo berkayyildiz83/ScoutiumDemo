@@ -13,7 +13,7 @@ public class LoginPage {
     public WebDriver driver;
     WebDriverWait wait;
 
-    By emailLogin = By.xpath("//span[contains(text(),'E-Posta ile giriş yapmak istiyorum.')]");
+    By emailLogin = By.xpath("//span[contains(text(),'Want to login by e-mail.')]");
     By textEmail = By.cssSelector("input[type='email']");
     By textPassword = By.xpath("//input[@type='password']");
     By btnGirisYap = By.xpath("//form/div/div[4]/button/div");
