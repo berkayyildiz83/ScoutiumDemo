@@ -29,11 +29,13 @@ public class PlayerDetail {
         String parentId = it.next();
         String childId = it.next();
         driver.switchTo().window(childId);
-        if((wait.until(ExpectedConditions.elementToBeClickable(btnTakipEt)).isDisplayed())) {
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(btnTakipEt)).isDisplayed();
             System.out.println("TEST PASSED");
 
         }
-        else {
+        catch (Exception e){
+            wait.until(ExpectedConditions.elementToBeClickable(btnTakipEdiliyor)).isDisplayed();
             System.out.println("TEST FAILED");
         }
     }
